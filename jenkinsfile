@@ -23,11 +23,12 @@ pipeline {
 			}
 		}
 
-		/* stage('Deploy') {
+		stage('Deploy') {
 			steps {
-			    bat "mvn jar:jar deploy:deploy"
+			   // bat "mvn jar:jar deploy:deploy"
+			    bat "mvn war:war deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://localhost:8080/')], contextPath: 'boot-with-jenkins', war: 'target/*.war'"
 			}
-		} */
+		}
 	}
 }
 
